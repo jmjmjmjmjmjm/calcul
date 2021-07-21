@@ -92,198 +92,64 @@ class Controller extends GetxController {
 }
 
 class Calkulator extends StatelessWidget {
-  const Calkulator({Key? key}) : super(key: key);
+  final Controller c = Get.put(Controller());
 
   @override
   Widget build(BuildContext context) {
-    final Controller c = Get.put(Controller());
-    double h = MediaQuery.of(context).size.height;
-    double w = MediaQuery.of(context).size.width;
-
     return SafeArea(
       child: Scaffold(
         body: Column(
           children: [
-            Container(
-              height: h / 3,
-              width: w,
-              alignment: Alignment.bottomRight,
-              child: Obx(
-                () => Text(
-                  "${c.count}",
-                  style: TextStyle(color: Colors.white, fontSize: 40),
+            Expanded(
+              flex: 3,
+              child: Container(
+                alignment: Alignment.bottomRight,
+                child: Obx(
+                  () => Text(
+                    "${c.count}",
+                    style: TextStyle(color: Colors.white, fontSize: 40),
+                  ),
                 ),
               ),
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                btn(
-                    "C",
-                    w,
-                    w,
-                    Colors.white,
-                    Text("C",
-                        style: TextStyle(color: Colors.black, fontSize: 40))),
-                btn(
-                    "+/-",
-                    w,
-                    w,
-                    Colors.white,
-                    Text("+/-",
-                        style: TextStyle(color: Colors.black, fontSize: 40))),
-                btn(
-                    "%",
-                    w,
-                    w,
-                    Colors.white,
-                    Text("%",
-                        style: TextStyle(color: Colors.black, fontSize: 40))),
-                btn(
-                    "/",
-                    w,
-                    w,
-                    Colors.yellow,
-                    Text("/",
-                        style: TextStyle(color: Colors.black, fontSize: 40)))
+                btn(Colors.white, "C", 1),
+                btn(Colors.white, "+/", 1),
+                btn(Colors.white, "%", 1),
+                btn(Colors.yellow, "/", 1),
               ],
-            ),
-            SizedBox(
-              height: 8,
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                btn(
-                    "7",
-                    w,
-                    w,
-                    Colors.grey,
-                    Text("7",
-                        style: TextStyle(color: Colors.white, fontSize: 40))),
-                btn(
-                    "8",
-                    w,
-                    w,
-                    Colors.grey,
-                    Text("8",
-                        style: TextStyle(color: Colors.white, fontSize: 40))),
-                btn(
-                    "9",
-                    w,
-                    w,
-                    Colors.grey,
-                    Text("9",
-                        style: TextStyle(color: Colors.white, fontSize: 40))),
-                btn(
-                    "*",
-                    w,
-                    w,
-                    Colors.yellow,
-                    Text("x",
-                        style: TextStyle(color: Colors.white, fontSize: 40))),
+                btn(Colors.grey, "7", 1),
+                btn(Colors.grey, "8", 1),
+                btn(Colors.grey, "9", 1),
+                btn(Colors.yellow, "*", 1),
               ],
-            ),
-            SizedBox(
-              height: 8,
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                btn(
-                    "4",
-                    w,
-                    w,
-                    Colors.grey,
-                    Text("4",
-                        style: TextStyle(color: Colors.white, fontSize: 40))),
-                btn(
-                    "5",
-                    w,
-                    w,
-                    Colors.grey,
-                    Text("5",
-                        style: TextStyle(color: Colors.white, fontSize: 40))),
-                btn(
-                    "6",
-                    w,
-                    w,
-                    Colors.grey,
-                    Text("6",
-                        style: TextStyle(color: Colors.white, fontSize: 40))),
-                btn(
-                    "-",
-                    w,
-                    w,
-                    Colors.yellow,
-                    Text("-",
-                        style: TextStyle(color: Colors.white, fontSize: 40)))
+                btn(Colors.grey, "4", 1),
+                btn(Colors.grey, "5", 1),
+                btn(Colors.grey, "6", 1),
+                btn(Colors.yellow, "-", 1),
               ],
-            ),
-            SizedBox(
-              height: 8,
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                btn(
-                    "1",
-                    w,
-                    w,
-                    Colors.grey,
-                    Text("1",
-                        style: TextStyle(color: Colors.white, fontSize: 40))),
-                btn(
-                    "2",
-                    w,
-                    w,
-                    Colors.grey,
-                    Text("2",
-                        style: TextStyle(color: Colors.white, fontSize: 40))),
-                btn(
-                    "3",
-                    w,
-                    w,
-                    Colors.grey,
-                    Text("3",
-                        style: TextStyle(color: Colors.white, fontSize: 40))),
-                btn(
-                    "+",
-                    w,
-                    w,
-                    Colors.yellow,
-                    Text("+",
-                        style: TextStyle(color: Colors.white, fontSize: 40)))
+                btn(Colors.grey, "1", 1),
+                btn(Colors.grey, "2", 1),
+                btn(Colors.grey, "3", 1),
+                btn(Colors.yellow, "+", 1),
               ],
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 8),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  btn(
-                      "0",
-                      w * 2.2,
-                      w,
-                      Colors.grey,
-                      Text("0",
-                          style: TextStyle(color: Colors.white, fontSize: 40))),
-                  btn(
-                      ".",
-                      w,
-                      w,
-                      Colors.grey,
-                      Text(".",
-                          style: TextStyle(color: Colors.white, fontSize: 40))),
-                  btn(
-                      "=",
-                      w,
-                      w,
-                      Colors.yellow,
-                      Text("=",
-                          style: TextStyle(color: Colors.white, fontSize: 40))),
-                ],
-              ),
+            Row(
+              children: [
+                btn(Colors.grey, "0", 2),
+                btn(Colors.grey, ".", 1),
+                btn(Colors.white, "=", 1),
+              ],
             ),
           ],
         ),
@@ -291,21 +157,22 @@ class Calkulator extends StatelessWidget {
     );
   }
 
-  ClipRRect btn(String num, double w, double h, Color color, Text text) {
-    final Controller c = Get.put(Controller());
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(50),
-      child: Container(
-        color: color,
-        width: w / 5,
-        height: h / 5,
-        child: TextButton(
-          style: ButtonStyle(
-            overlayColor:
-                MaterialStateColor.resolveWith((states) => Colors.red),
+  Expanded btn(Color color, String text, int f) {
+    return Expanded(
+      flex: f,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: MaterialButton(
+          color: color,
+          height: 80,
+          onPressed: () => {c.increment(text)},
+          // shape: CircleBorder(),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
+          child: Text(
+            text,
+            style: TextStyle(color: Colors.black, fontSize: 30),
           ),
-          onPressed: () => {c.increment(num)},
-          child: text,
         ),
       ),
     );
